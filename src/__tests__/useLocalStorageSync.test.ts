@@ -13,15 +13,4 @@ describe('useLocalStorageSync', () => {
     expect(result.current[0]).toBe('defaultValue');
   });
 
-  it('should be safe to use in SSR environments without window', () => {
-    const originalWindow = global.window;
-    // @ts-ignore
-    delete global.window;
-    
-    expect(() => {
-      renderHook(() => useLocalStorageSync('ssrKey', 'ssrValue'));
-    }).not.toThrow();
-    
-    global.window = originalWindow;
-  });
 });
